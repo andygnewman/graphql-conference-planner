@@ -16,6 +16,7 @@ import Register from './component/authentication/Register';
 import ConferenceNavigation from './ConferenceNavigation';
 
 ReactDOM.render(
+  <ApolloProvider client={apolloClient}>
     <BrowserRouter>
       <div>
         <Header/>
@@ -28,7 +29,8 @@ ReactDOM.render(
         </Switch>
 
       </div>
-    </BrowserRouter>,
+    </BrowserRouter>
+  </ApolloProvider>,
   document.getElementById('root'));
 
 registerServiceWorker();
