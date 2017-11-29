@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
 import ConferencesData from './component/conference/Conferences';
-import ConferenceDetails from './component/conference/ConferenceDetails';
+import ConferenceDetailsData from './component/conference/ConferenceDetails';
 import TalkDetails from './component/talk/TalkDetails';
 import SpeakerDetails from './component/speaker/SpeakerDetails';
 import SecureAddConference from './component/management/conference/Conference';
@@ -58,7 +58,7 @@ const ConferenceNavigation = (props) => {
     </section>
 
       <Route exact path="/" component={ConferencesData}/>
-      <Route path="/conference/:id" component={ConferenceDetails}/>
+      <Route path="/conference/:id" component={ConferenceDetailsData}/>
       <Route path="/talk/:id" component={TalkDetails}/>
       <Route path="/speaker/:id" component={SpeakerDetails}/>
       <Route exact path="/secure/conferences" component={ConferenceManagementBoard}/>

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {errorPropsConfig, validateRegisterForm} from '../../utils/index';
-import {gql, graphql} from 'react-apollo';
+import {graphql} from 'react-apollo';
 import { Form, Text, Textarea } from 'react-form';
+import gql from 'graphql-tag';
 
 class Register extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class Register extends Component {
 
   submitRegistration = (values) => {
       const {passwordConfirmation, ...newUser} = values;
+      console.log('values: ', values);
       this.props.mutate({
         variables: newUser
       })
@@ -146,7 +148,33 @@ Register.defaultProps = {
 };
 
 // TODO write a mutation to register a user
-const mutation = undefined;
+
+const mutation = gql`
+  mutation createUser(
+    $username: String!,
+    $publicName: String!,
+    $email: String!,
+    $picture: String!,
+    $bio: String!,
+    $password: String!
+  ) {
+    createUser (
+      username: $username,
+      publicName: $publicName,
+      picture: $picture,
+      bio: $bio,
+      authProvider: {
+        email: {
+          email: $email,
+          password: $password
+        }
+      }
+    )
+    {
+      username
+    }
+  }
+`;
 
 // TODO enhance the component with the mutation by using the graphql HoC
-export default Register;
+export default graphql(mutation)(Register);
