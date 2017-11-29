@@ -151,9 +151,34 @@ ConferenceDetails.fragments = {
 //  (the id should be required)
 //  alias the query, call it conference
 //  You should only use fragments in the query on each Type!
-const query = undefined;
+
+const query = gql`
+  query conference($id: ID!) {
+    conference: Conference(id: $id) {
+      ...ConferenceOverview
+      ...ConferenceDetails
+      sponsors { ...SponsorDetails }
+      talks { ...TalkOverview }
+      _attendeesMeta {count},
+      _sponsorsMeta {count},
+    }
+  }
+  ${ConferenceOverview.fragments.conference}
+  ${ConferenceDetails.fragments.conferenceDetails}
+  ${Sponsors.fragments.sponsor}
+  ${TalkOverview.fragments.talk}
+`;
 
 //TODO the query needs the variable id
-const config = {};
+const config = {
+  options: ({match: {params: {id}}}) => ({
+    variables: {
+      id
+    },
+    fetchPolicy: 'cache-and-network'
+  })
+};
 
-export default ConferenceDetails;
+const ConferenceDetailsData = waitForGraphql(query, config)(ConferenceDetails);
+
+export default ConferenceDetailsData;
