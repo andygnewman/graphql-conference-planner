@@ -1,5 +1,5 @@
 import React from 'react';
-import {gql} from 'react-apollo';
+import gql from 'graphql-tag';
 import {waitForGraphql} from '../../apollo/index';
 import TalkOverview from './TalkOverview';
 import Speaker from '../speaker/SpeakerOverview';

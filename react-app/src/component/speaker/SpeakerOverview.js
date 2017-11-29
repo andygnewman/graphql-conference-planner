@@ -1,5 +1,5 @@
 import React from 'react';
-import {gql} from 'react-apollo';
+import gql from 'graphql-tag';
 import {propType} from 'graphql-anywhere';
 import {Link} from 'react-router-dom';
 

@@ -1,7 +1,8 @@
 import React  from 'react';
 import './Conferences.css';
 import ConferenceOverview from './ConferenceOverview';
-import {gql} from 'react-apollo';
+
+import gql from 'graphql-tag';
 import {waitForGraphql} from '../../apollo'; import {divideInRows} from '../../utils/index';
 
 const Conferences = ({data: {
@@ -34,7 +35,20 @@ Conferences.defaultProps = {
 };
 
 // TODO write a query to get all conferences
-const query = undefined;
+const query = gql`
+    query Lol {
+      conferences: allConferences {
+        id
+        startDate
+        name
+        logo
+        _attendeesMeta {
+          count
+        }
+        city
+        country
+      }
+    }`;
 
 
 const config = {
@@ -44,6 +58,6 @@ const config = {
 };
 
 // TODO Use the HoC waitForGraphql to enhance your component with the query
-const ConferencesData = undefined;
+const ConferencesData = waitForGraphql(query, config)(Conferences);
 
-export default Conferences;
+export default ConferencesData;

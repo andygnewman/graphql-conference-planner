@@ -1,6 +1,6 @@
 import React from 'react';
 import {waitForGraphql} from '../../apollo/index';
-import {gql} from 'react-apollo'; import SpeakerOverview from './SpeakerOverview'; import TalkOverview from '../talk/TalkOverview'; import {divideInRows} from '../../utils/index';
+import gql from 'graphql-tag'; import SpeakerOverview from './SpeakerOverview'; import TalkOverview from '../talk/TalkOverview'; import {divideInRows} from '../../utils/index';
 
 const SpeakerDetails = ({data: {
   speaker: {

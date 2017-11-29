@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import Conferences from './component/conference/Conferences';
+import ConferencesData from './component/conference/Conferences';
 import ConferenceDetails from './component/conference/ConferenceDetails';
 import TalkDetails from './component/talk/TalkDetails';
 import SpeakerDetails from './component/speaker/SpeakerDetails';
@@ -57,7 +57,7 @@ const ConferenceNavigation = (props) => {
       </div>
     </section>
 
-      <Route exact path="/" component={Conferences}/>
+      <Route exact path="/" component={ConferencesData}/>
       <Route path="/conference/:id" component={ConferenceDetails}/>
       <Route path="/talk/:id" component={TalkDetails}/>
       <Route path="/speaker/:id" component={SpeakerDetails}/>

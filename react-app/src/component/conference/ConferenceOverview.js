@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {gql} from 'react-apollo';
+import gql from 'graphql-tag';
 import {propType} from 'graphql-anywhere';
 
 const ConferenceOverview = (
@@ -61,6 +61,7 @@ ConferenceOverview.fragments = {
 // TODO add propTypes with the above fragment
 // Hint use propType from graphql-anywhere
 ConferenceOverview.propTypes = {
+  conference: propType(ConferenceOverview.fragments).isRequired,
 };
 
 export default ConferenceOverview;

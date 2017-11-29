@@ -1,9 +1,10 @@
 import React from 'react';
 import {graphql} from 'react-apollo';
-import {ApolloClient, createNetworkInterface} from 'react-apollo';
+import {createNetworkInterface} from 'react-apollo';
 import LoadingComponent from '../component/LoadingComponent';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloClient } from 'apollo-client';
 
 //TODO create an apolloClient
 // uri to use : https://api.graph.cool/simple/v1/cj1ufizxi5lgy0109064uyi7i

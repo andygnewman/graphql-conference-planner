@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {gql} from 'react-apollo';
+import gql from 'graphql-tag';
 import {waitForGraphql} from '../../apollo';
 import SpeakerOverview from '../speaker/SpeakerOverview';
 import Company from '../Company';

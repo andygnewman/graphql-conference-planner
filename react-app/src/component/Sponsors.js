@@ -1,5 +1,5 @@
 import React from 'react';
-import {gql} from 'react-apollo';
+import gql from 'graphql-tag';
 import Company from './Company';
 
 
@@ -20,7 +20,7 @@ return <div>
 Sponsors.fragments = {
   sponsor: gql`
       ${Company.fragments.company}
-      
+
       fragment SponsorDetails on Sponsor {
           type
           company {

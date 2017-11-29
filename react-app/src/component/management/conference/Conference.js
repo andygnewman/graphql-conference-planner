@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {dateToInput, errorPropsConfig, validateConferenceForm} from '../../../utils/index';
 import {SuccessModal} from '../../modal/index';
-import {gql, graphql, compose} from 'react-apollo';
+import {graphql, compose} from 'react-apollo';
 import ConferenceDetails from '../../conference/ConferenceDetails';
 import {waitForGraphql} from '../../../apollo/index';
 import { Form, Text } from 'react-form';
+import gql from 'graphql-tag';
 
 const hasNoIdParam = ({match: {params: {id}}}) => !id;
 
