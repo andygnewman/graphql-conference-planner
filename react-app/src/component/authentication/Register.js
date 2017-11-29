@@ -17,7 +17,6 @@ class Register extends Component {
 
   submitRegistration = (values) => {
       const {passwordConfirmation, ...newUser} = values;
-      console.log('values: ', values);
       this.props.mutate({
         variables: newUser
       })

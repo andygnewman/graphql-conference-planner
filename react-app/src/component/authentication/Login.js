@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {errorPropsConfig, validateLoginForm} from '../../utils/index';
-import {gql, graphql} from 'react-apollo';
+import {graphql} from 'react-apollo';
 import { Form, Text } from 'react-form';
+import gql from 'graphql-tag';
 
 class Login extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Login extends Component {
         localStorage.setItem('userName', values.email);
         this.props.history.push('/');
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({
           userNotFound: true
         });
@@ -101,7 +102,25 @@ Login.defaultProps ={
 };
 
 // TODO write a mutation to log the user
-const mutation = undefined;
+const mutation = gql`
+  mutation signinUser (
+    $email: String!,
+    $password: String!
+  ) {
+    signinUser (
+      email: {
+        email: $email,
+        password: $password
+      }
+    )
+    {
+      token
+      user {
+        email
+      }
+    }
+  }
+`;
 
 //use graphql HoC
-export default Login;
+export default graphql(mutation)(Login);
